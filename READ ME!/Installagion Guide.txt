@@ -1,0 +1,88 @@
+~~** WEATHER STATION README! **~~
+
+++ CHANGELOGS 5.7.11 ++
+
+- Fixed an issue preventing the weather station from selecting bad weather conditions.
+- A moderate amount of small bugfixes and optimizations.
+
+++ CHANGELOGS 5.7.7 ++
+
+- Fixed issue with force weather when there are 12 or more weather states.
+- You can now have a theoretically infinite number of weather states.
+- Optimized several aspects of the weather station.
+- Implemented 5 seconds delay between each weather broadcast.
+- Fixed errors with moderators recognition.
+- Optimized notecard parsing, fixed bug that sometimes causes blank weather entries.
+
+
+++ CHANGELOGS 5.7.6 ++
+
+- Fixed numerous small memory leaks in the code.
+- Fixed weather forcing, you can now select a weather manually when stopped.
+- Fixed an issue that sometimes caused the station to skip the very last line in the configuration notecards.
+- Improved temperature & wind emulation a little.
+- Many, many under-the-hood improvements that won't be noticeable to the end user, or even reflect on the station performance. Generally code refinements to clean up & improve the manageability of its guts.
+
+
+++ INSTALLATION INSTRUCTIONS ++
+
+The weather system is relatively simple to install (configuration instructions are found in the "set_01" notecard that's included in the folder.
+
+All you need to do is simply drag the script named "weatherstation-server-5.7" into any object you like (it doesn't need to be in a specific prim, just put it anywhere, doesn't matter in what). Then you need to open the notecard titled "set_01" & read through it. I've already configured everything for you for a typical warm climate, so unless you want to change anything (detailed instructions on how to configure the settings is found in that card's comments), simply scroll all the way to the bottom of that card until you find "[Moderators]".
+Add your full SL name (NOT your display name) to a line there, as well as the full SL name of every person you'd like to be able to control the weather station.
+
+Once you're satisfied, drop the notecard in there & touch the object containing the server script. Select "load config" & then load the configuration from there. You can have up to 12 different notecard configurations to choose from (more than enough; any more & opening the load config menu will trigger an error, and I would think 12 is more than enough anyway. ;])
+
+The station should start itself up when it's finished loading, and if not, touch the station & select "Start" in the menu that opens. You're ready to go with that!
+
+
+So what are the "scroll-slave" & "skybox-slave" scripts? They're the things that listen for the data output of the weather station. Here's what they do:
+
+scoll-slave - It puts on the HUD texture of the selected weather type, and displays weather data as text above itself. Rez it in the world, attach it to your HUD, dump it in a lake and forget about it, doesn't matter what you do with it, it should still work.
+
+skybox-slave - This one is for those mainland sims out there who want to surround their RP area with a sky (or full sims that just wants to do it for their own reasons). This makes use of the sky textures that you configure in the notecard, & it does not display any sort of weather data *at all*. It's just ambient textures, like clouds or stars & the like.
+Basically, if you aren't entirely sure what it is (or if you need it), then you probably don't want to install this anywhere because it's absolutely useless beyond the visual aspect of it.
+
+
+
+
+++ FEATURES (and wtf is "MOTD"?!) ++
+
+The 5.7 station has been VASTLY improved since its original release & actually has LESS features now because almost everything has been completely automated, from start-up & what season it is, to how to cycle into bad weather conditions & select wind and temperatures to display on the scroll-slaves!
+
+Basically, you can pretty much just forget about the station after installing it, but if that's not your thing, let's explain the two of 6 options that might be a little bit unclear.
+
+We have your typical obvious ones (Start, Stop, Reset, Load config), but there are two that need some elaboration:
+"Force weather"
+and
+"MOTD." (wtf is this right?)
+
+"Force weather" should be pretty obvious. Select it, & it brings up a full list of your weather conditions for the current season (if the list changes one day, don't freak out! It just means it's now using a different season! Seriously!). Then just pick and choose which weather you'd like it to be for the next (at least an) hour or more, & Bob's your uncle.
+Oh, and if you have more than 12 weathers listed for the season you're currently at, it will moan at you & refuse to show you anything.
+
+"MOTD" is basically "Message Of The Day", and what it does is that it makes the station send an additional little message to all scroll-slave listeners installed in the sim (and the weatherboxes installed by default in all Lismore RP Tool HUDs) that appear at the very bottom of the text. In this way, you can transmit short messages to everyone who is in, and enters the SIM wearing the RP tool HUD (or the scroll-slave), AND all installed listeners AT THE SAME FLIPPIN' TIME! HOW AWESOME IS THAT?!
+
+The output will look something like this:
+
+                                                    Clear skies.
+                                                  20.0°C / 68.1°F
+                                                 Wind: 2.3 m/s, NE.
+                                    (( This here is a MOTD message, yo! ))
+
+Obviously (( )) are optional. The MOTD also supports linebreaks so if you hit enter in the textbox you can type in & write something on a second line, it will appear underneath that again & so on and so forth, until you hit the object text limit set by LL & it all either errors the frikk out or the text simply goes poof!
+
+Typing "hide" & clicking submit will undo that damage, as "hide" obviously tells the thing to delete the MOTD you set entirely.
+
+
+
+
+Everything else is automated, weather selection, wind (combines LL's wind system w/ a pseudo-random-but-also-somewhat-predictable selection of wind direction), temperature simulation (it is dished out in both Centigrade and Fahrenheit, yo!) & everything in-between.
+
+
+Oh, and it also has dynamic memory scaling so its memory footprint actually decreases if you load a card with less stuff in it, and increases when you have a lot! It will always give itself 6 extra KB of memory to play with just in case for some reason something goes wrong and starts to bleed memory like a butchered hog. (unlikely to happen but hey, covering my butt y'know?)
+The default example card provided has a rough memory footprint of 48Kb (+ 6Kb extra allocated memory, so you'll be reading about... 54Kb if you do Script Info in Firestorm). That's actually not even 10Kb away from the station's footprint before it loads a configuration so there's LOTS of space!
+
+I think that pretty much covers it all!
+
+Happy weathering!
+(Oh and btw, when you read the instructions in "set_01", it may look a little overwhelming at first, especially if you're reading it in a dark room, are tired or should probably not be on the computer reading bright things in the first place, but please do take the time to read them SLOWLY. How it works and what to do is explained in GREAT detail (and I mean great! - also, paranthesis within a paranthesis...paranception?) & you'll probably have a lot of frustration with the syntax if you're the impatient type who doesn't like to read detailed instructions & instead jump straight to the editing. Seriously, take your time to read & try to understand it; the station is made with customization in mind so there are quite a few variables to fiddle with.)
