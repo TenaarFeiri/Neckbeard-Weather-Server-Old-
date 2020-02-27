@@ -1,0 +1,173 @@
+##########################################################
+# Thank you for choosing the Neckbeards Anonymous weatherstation.
+# Please follow the instructions to set up your station.
+#
+# INSTRUCTIONS
+#
+# The weather station is designed to be hugely customizable and can be tailored to your own needs.
+# This does mean however, that the settings are a little complicated to understand at first.
+# As you've no doubt realized now, anything starting with a # is considered a comment. Everything after #
+# including the # itself is either ignored or deleted, so you can safely add your own comments throughout the notecard.
+#
+# Here is how the settings notecard works:
+# The syntax is very simple. For each line, you input several pieces of data to help the station configure itself.
+#
+# Each line looks like this: 
+# 
+# Weather Name|Sky texture (day)|Sky texture (night)HUD texture (day)|HUD texture (night)|Temperature offset
+#
+# Let's break it down.
+# Weather name is obvious; that is the weather on that particular line. Let us use Clear Skies as our example.
+#
+# Sky texture (day) & Sky texture (night) are almost the same as the HUD texture. The difference
+# is that these textures are broadcast to the skydome (if it is installed on your sim).
+# These textures are not meant to be icons; they're meant to be backdrops. Very useful in small
+# RP sims that exist on the mainland, especially in skyboxes.
+#
+# HUD texture (day) & HUD texture (night) are less so, but they serve a purpose. This is the texture (icon)
+# that appears on people wearing station-compatible HUDs. It is saved as a UUID in the station's configs
+# so that the HUDs can load quicker. When the station selects a weather, it broadcasts these UUIDs
+# and the HUDs register them, and change their textures to the one associated with that UUID.
+# If you do not want different icons for night and day, simply give them the same UUIDs.
+#
+# Remember that these MUST be UUIDs, otherwise it won't work. This saves performance for the listeners,
+# as they don't need to keep the textures saved in their inventories to apply them.
+#
+# Temperature offset is basically the differential between temperatures simulated by the station.
+# The higher the number, the hotter the temperature, and the lower the number, the colder.
+# Play around with it until you're satisfied.
+#
+# Now that we understand how the config works, look at the rest of this notecard for examples.
+# This default notecard contains a fully set up weather set designed for mountain and/or forest areas.
+# Study the syntax a little; it's easier to understand than it looks at first glance.
+#
+##########################################################
+#
+# Further down the card you will also notice two other categories: Bad Weathers & Moderators.
+# Let's explain them in order.
+#
+# Bad Weathers is a nifty little 'limiter' where you can put in ALL your bad weather conditions, one for each line.
+# This allows the weather station to recognize when it can select a bad weather condition, and ease into it
+# for a more natural transition.
+# Just adding your weathers there isn't enough though. You will also need to add a ! before 
+# any condition in the previous categories that you want to trigger the transition.
+#
+# If you leave Bad Weathers blank, the station will simply select at random.
+#
+###########################################################
+
+# Remember the syntax: Weather Name|HUD texture (day)|HUD texture (night)|Sky texture (day)|Sky texture (night)|Temperature offset
+# If a season has more than 12 weathers, the station will simply ignore any attempt at forcing a weather change.
+
+[Spring]
+
+Bright Blue Skies.|f6a1f52a-0581-0623-6798-18f55462a622|5c2432d3-a1e7-73e6-83af-7e5baaa0c443|bb045833-a059-cccc-8e95-7bcd47a1a17e|ffcdad63-34a0-4d59-8304-ff04e851aa13|85.73388
+
+Clear skies.|99432353-442c-8100-fa82-f7b90f1f37e6|5c2432d3-a1e7-73e6-83af-7e5baaa0c443|bb045833-a059-cccc-8e95-7bcd47a1a17e|ffcdad63-34a0-4d59-8304-ff04e851aa13|82.75664
+
+!Partly cloudy.|1b8cafd0-e097-6753-3380-8e7924bbef12|09c2b14a-4271-adb0-7e8b-7472e312ae4d|dac12ab4-42ea-9267-9ba5-583b084ed36c|c36f20ad-0d6f-f6a4-93c5-ffd6c8350b14|78.75664
+
+Partly cloudy w/ showers.|7adc11bb-19d6-dfe0-f857-70e6ff4f6811|0412251b-fcfa-ea6c-5a49-27f0dd808d58|78c5a406-d6b1-3e10-eb8f-33675becf856|86eb397a-bc77-9400-f849-f9a0ff8ea330|75.23445
+
+!Cloudy.|526bb036-5c87-0d91-06d0-7a9025d6f5df|066dbac6-e780-84f2-7ce0-b6abecc2a0e3|c77cf308-ac0b-5519-d62c-a859744678b1|e009aca5-2b8c-bb8f-13e3-3bbc97da6c89|74.76889
+
+Rain.|526bb036-5c87-0d91-06d0-7a9025d6f5df|066dbac6-e780-84f2-7ce0-b6abecc2a0e3|dc818950-75ae-ab9f-dc7d-ee45e7d41e9e|6f3b8ab6-3bc7-35a1-82cd-f6d84cd42ccd|70.76889
+
+Thunders.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|ab184c42-8601-069d-5739-36ac5c8015af|02accd64-10ca-ad0f-2ce4-189d7b40be6a|80.76889
+
+Thunder w/ lightning.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|ab184c42-8601-069d-5739-36ac5c8015af|02accd64-10ca-ad0f-2ce4-189d7b40be6a|80.76889
+
+Thunderstorm (no lightning).|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|07400484-ed05-586e-5c15-6b9528e15728|9b78be62-cd9d-147e-dc39-8d8706362838|76.76889
+
+Thunderstorm w/ rain & lightning.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|07400484-ed05-586e-5c15-6b9528e15728|9b78be62-cd9d-147e-dc39-8d8706362838|72.76889
+
+Thunderstorm w/rain, no lightning.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|07400484-ed05-586e-5c15-6b9528e15728|9b78be62-cd9d-147e-dc39-8d8706362838|72.76889
+
+Hazy.|fc0f4ab6-2c5c-aefa-9e96-091e19c1d5ba|0412251b-fcfa-ea6c-5a49-27f0dd808d58|c77cf308-ac0b-5519-d62c-a859744678b1|e009aca5-2b8c-bb8f-13e3-3bbc97da6c89|67.33445
+
+[Summer]
+
+Bright Blue Skies.|f6a1f52a-0581-0623-6798-18f55462a622|5c2432d3-a1e7-73e6-83af-7e5baaa0c443|bb045833-a059-cccc-8e95-7bcd47a1a17e|ffcdad63-34a0-4d59-8304-ff04e851aa13|100.73388
+
+Clear skies.|99432353-442c-8100-fa82-f7b90f1f37e6|5c2432d3-a1e7-73e6-83af-7e5baaa0c443|bb045833-a059-cccc-8e95-7bcd47a1a17e|ffcdad63-34a0-4d59-8304-ff04e851aa13|97.75664
+
+!Partly cloudy.|1b8cafd0-e097-6753-3380-8e7924bbef12|09c2b14a-4271-adb0-7e8b-7472e312ae4d|dac12ab4-42ea-9267-9ba5-583b084ed36c|c36f20ad-0d6f-f6a4-93c5-ffd6c8350b14|95.75664
+
+Partly cloudy w/ showers.|7adc11bb-19d6-dfe0-f857-70e6ff4f6811|0412251b-fcfa-ea6c-5a49-27f0dd808d58|78c5a406-d6b1-3e10-eb8f-33675becf856|86eb397a-bc77-9400-f849-f9a0ff8ea330|95.23445
+
+!Cloudy.|526bb036-5c87-0d91-06d0-7a9025d6f5df|066dbac6-e780-84f2-7ce0-b6abecc2a0e3|c77cf308-ac0b-5519-d62c-a859744678b1|e009aca5-2b8c-bb8f-13e3-3bbc97da6c89|94.76889
+
+Rain.|526bb036-5c87-0d91-06d0-7a9025d6f5df|066dbac6-e780-84f2-7ce0-b6abecc2a0e3|dc818950-75ae-ab9f-dc7d-ee45e7d41e9e|6f3b8ab6-3bc7-35a1-82cd-f6d84cd42ccd|92.76889
+
+Thunders.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|ab184c42-8601-069d-5739-36ac5c8015af|02accd64-10ca-ad0f-2ce4-189d7b40be6a|90.76889
+
+Thunder w/ lightning.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|ab184c42-8601-069d-5739-36ac5c8015af|02accd64-10ca-ad0f-2ce4-189d7b40be6a|90.76889
+
+Thunderstorm (no lightning).|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|07400484-ed05-586e-5c15-6b9528e15728|9b78be62-cd9d-147e-dc39-8d8706362838|90.76889
+
+Thunderstorm w/ rain & lightning.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|07400484-ed05-586e-5c15-6b9528e15728|9b78be62-cd9d-147e-dc39-8d8706362838|92.76889
+
+Thunderstorm w/rain, no lightning.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|07400484-ed05-586e-5c15-6b9528e15728|9b78be62-cd9d-147e-dc39-8d8706362838|92.76889
+
+Hazy.|fc0f4ab6-2c5c-aefa-9e96-091e19c1d5ba|0412251b-fcfa-ea6c-5a49-27f0dd808d58|c77cf308-ac0b-5519-d62c-a859744678b1|e009aca5-2b8c-bb8f-13e3-3bbc97da6c89|88.33445
+
+[Autumn]
+
+Clear skies.|99432353-442c-8100-fa82-f7b90f1f37e6|5c2432d3-a1e7-73e6-83af-7e5baaa0c443|bb045833-a059-cccc-8e95-7bcd47a1a17e|ffcdad63-34a0-4d59-8304-ff04e851aa13|82.75664
+
+!Partly cloudy.|1b8cafd0-e097-6753-3380-8e7924bbef12|09c2b14a-4271-adb0-7e8b-7472e312ae4d|dac12ab4-42ea-9267-9ba5-583b084ed36c|c36f20ad-0d6f-f6a4-93c5-ffd6c8350b14|78.75664
+
+Partly cloudy w/ showers.|7adc11bb-19d6-dfe0-f857-70e6ff4f6811|0412251b-fcfa-ea6c-5a49-27f0dd808d58|78c5a406-d6b1-3e10-eb8f-33675becf856|86eb397a-bc77-9400-f849-f9a0ff8ea330|75.23445
+
+!Cloudy.|526bb036-5c87-0d91-06d0-7a9025d6f5df|066dbac6-e780-84f2-7ce0-b6abecc2a0e3|c77cf308-ac0b-5519-d62c-a859744678b1|e009aca5-2b8c-bb8f-13e3-3bbc97da6c89|74.76889
+
+Rain.|526bb036-5c87-0d91-06d0-7a9025d6f5df|066dbac6-e780-84f2-7ce0-b6abecc2a0e3|dc818950-75ae-ab9f-dc7d-ee45e7d41e9e|6f3b8ab6-3bc7-35a1-82cd-f6d84cd42ccd|70.76889
+
+Thunders.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|ab184c42-8601-069d-5739-36ac5c8015af|02accd64-10ca-ad0f-2ce4-189d7b40be6a|80.76889
+
+Thunder w/ lightning.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|ab184c42-8601-069d-5739-36ac5c8015af|02accd64-10ca-ad0f-2ce4-189d7b40be6a|80.76889
+
+Thunderstorm (no lightning).|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|07400484-ed05-586e-5c15-6b9528e15728|9b78be62-cd9d-147e-dc39-8d8706362838|76.76889
+
+Thunderstorm w/ rain & lightning.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|07400484-ed05-586e-5c15-6b9528e15728|9b78be62-cd9d-147e-dc39-8d8706362838|72.76889
+
+Thunderstorm w/rain, no lightning.|9ad7e901-d78f-ce86-4dc6-4be6a7e6c9f1|3317b032-8b03-efca-1635-b41f504e77f3|07400484-ed05-586e-5c15-6b9528e15728|9b78be62-cd9d-147e-dc39-8d8706362838|72.76889
+
+Hazy.|fc0f4ab6-2c5c-aefa-9e96-091e19c1d5ba|0412251b-fcfa-ea6c-5a49-27f0dd808d58|c77cf308-ac0b-5519-d62c-a859744678b1|e009aca5-2b8c-bb8f-13e3-3bbc97da6c89|67.33445
+
+[Winter]
+
+Bright Blue Skies.|f6a1f52a-0581-0623-6798-18f55462a622|5c2432d3-a1e7-73e6-83af-7e5baaa0c443|bb045833-a059-cccc-8e95-7bcd47a1a17e|ffcdad63-34a0-4d59-8304-ff04e851aa13|18.22222
+
+Clear skies.|99432353-442c-8100-fa82-f7b90f1f37e6|5c2432d3-a1e7-73e6-83af-7e5baaa0c443|bb045833-a059-cccc-8e95-7bcd47a1a17e|ffcdad63-34a0-4d59-8304-ff04e851aa13|17.75664
+
+!Partly cloudy.|1b8cafd0-e097-6753-3380-8e7924bbef12|09c2b14a-4271-adb0-7e8b-7472e312ae4d|dac12ab4-42ea-9267-9ba5-583b084ed36c|c36f20ad-0d6f-f6a4-93c5-ffd6c8350b14|17.75664
+
+!Cloudy.|526bb036-5c87-0d91-06d0-7a9025d6f5df|066dbac6-e780-84f2-7ce0-b6abecc2a0e3|c77cf308-ac0b-5519-d62c-a859744678b1|e009aca5-2b8c-bb8f-13e3-3bbc97da6c89|17.76889
+
+Partly cloudy w/ light snowfall.|7adc11bb-19d6-dfe0-f857-70e6ff4f6811|7adc11bb-19d6-dfe0-f857-70e6ff4f6811|18d9bf52-91f0-55b6-7b78-6f93925bfde8|a37a6509-419b-595e-1c8c-d042e1803adf|14.75
+
+Snowing.|526bb036-5c87-0d91-06d0-7a9025d6f5df|066dbac6-e780-84f2-7ce0-b6abecc2a0e3|18d9bf52-91f0-55b6-7b78-6f93925bfde8|a37a6509-419b-595e-1c8c-d042e1803adf|14.12
+
+Snowstorm w/ heavy wind.|526bb036-5c87-0d91-06d0-7a9025d6f5df|0412251b-fcfa-ea6c-5a49-27f0dd808d58|32689007-e178-7b54-c7c5-d2cb3319e10d|952de4f1-633e-b46f-1de5-2738abf4fd3d|
+
+
+
+[Bad Weathers]
+ # List ALL your 'bad' weather conditions here, like "rain", "thunders", etc. They must be spelled exactly the same as in the previous categories.
+# If left blank, the station will just randomly select weathers. By specifying which of the conditions are bad weathers here, the station will ease into them more naturally.
+
+Rain.
+Thunders.
+Partly cloudy w/ showers.
+Thunderstorm w/rain, no lightning.
+Thunderstorm w/ rain & lightning.
+Thunderstorm (no lightning).
+Thunder w/ lightning.
+Snowstorm w/ heavy wind.
+Partly cloudy w/ light snowfall.
+Snowing.
+
+[Moderators] 
+# List all the moderators you want to be able to access this server here. One name per line.
+Tenaar Feiri
